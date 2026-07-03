@@ -1,0 +1,16 @@
+# Data (raw data often too large / not meant for public repo; keep processed sample only if small)
+data/raw/*.csv
+data/processed/*.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# OS
+.DS_Store
+
+# Power BI (keep the .pbix if you want it in the repo — comment out if so)
+# dashboard/*.pbix
