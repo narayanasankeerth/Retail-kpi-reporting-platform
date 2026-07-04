@@ -64,17 +64,23 @@ retail-kpi-reporting-platform/
 
 ```bash
 pip install -r requirements.txt
-python etl/extract.py
-python etl/transform.py
-python etl/validate.py
-python etl/load.py
+python -m etl.load
 ```
+
+(Run with `-m etl.load`, not `python etl/load.py` directly — the `-m` flag tells Python to run it as part of the `etl` package so the internal imports resolve correctly.)
 
 Then open `sql/kpi_queries.sql` against the resulting database, or open the Power BI file in `dashboard/` (connect it to `data/processed/retail.db`).
 
 ## Dashboard Preview
 
-*(Screenshots go in `dashboard/screenshots/` — add these once the dashboard is built, so this section renders inline for anyone browsing the repo without Power BI installed.)*
+![Retail Sales KPI Dashboard](dashboard/screenshots/dashboard_full.png)
+
+The dashboard includes:
+- Revenue by region and category (bar chart)
+- Revenue breakdown by sub-category (treemap)
+- Profit share by customer segment (donut chart)
+- Discount vs. profit relationship by category (scatter plot)
+- KPI cards for total sales, total profit, and total quantity sold
 
 ## Key KPIs Delivered
 
@@ -86,8 +92,8 @@ Then open `sql/kpi_queries.sql` against the resulting database, or open the Powe
 
 ## Data Source
 
-[Dataset link — see setup notes below]
+[Sample Superstore dataset](https://www.kaggle.com/datasets/vivek468/superstore-dataset-final) (Kaggle). Note: this variant does not include Order ID, Order Date, or Product Name columns — see `docs/data_dictionary.md` for how this shaped the project's scope.
 
 ## Status
 
-🚧 In progress — see commit history for build log.
+✅ Complete — ETL pipeline, data validation, SQL KPI queries, and Power BI dashboard all built and tested end to end.
